@@ -1,0 +1,104 @@
+timestamp,event_id,stage,status,reason
+2026-05-20T04:28:30.573213,1,ticker_generation,ok,generated
+2026-05-20T04:28:30.573343,2,ticker_generation,ok,generated
+2026-05-20T04:28:30.573391,3,ticker_generation,ok,generated
+2026-05-20T04:28:30.573431,4,ticker_generation,failed,missing token_name
+2026-05-20T04:28:31.083530,2,risk_scan,flagged,low_liquidity|concentration_risk|suspicious_name
+2026-05-20T06:23:05.349851+00:00,E999,ticker_generation,ok,direct:OPENAI
+2026-05-20T06:23:05.349914+00:00,E999,ticker_generation,ok,derivative:OPENAI
+2026-05-20T06:23:05.349938+00:00,E999,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.349957+00:00,E999,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.349982+00:00,E999,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.350007+00:00,E999,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.350026+00:00,E999,ticker_generation,ok,meme_phrase:AIAGEN
+2026-05-20T06:23:05.351200+00:00,E998,ticker_generation,ok,direct:NBAFIN
+2026-05-20T06:23:05.351296+00:00,E998,ticker_generation,ok,derivative:NBAX
+2026-05-20T06:23:05.351343+00:00,E998,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.351367+00:00,E998,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.351388+00:00,E998,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.351406+00:00,E998,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.351426+00:00,E998,ticker_generation,ok,meme_phrase:STARPL
+2026-05-20T06:23:05.985412+00:00,E001,ticker_generation,ok,direct:FIFAWO
+2026-05-20T06:23:05.985502+00:00,E001,ticker_generation,ok,derivative:FIFAX
+2026-05-20T06:23:05.985526+00:00,E001,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.985546+00:00,E001,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.985565+00:00,E001,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.985582+00:00,E001,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.985600+00:00,E001,ticker_generation,ok,meme_phrase:COUNTR
+2026-05-20T06:23:05.985644+00:00,E002,ticker_generation,ok,direct:APPLEW
+2026-05-20T06:23:05.985686+00:00,E002,ticker_generation,ok,derivative:APPLEX
+2026-05-20T06:23:05.985719+00:00,E002,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.985737+00:00,E002,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.985755+00:00,E002,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.985796+00:00,E002,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.985816+00:00,E002,ticker_generation,ok,meme_phrase:AIFEAT
+2026-05-20T06:23:05.985854+00:00,E003,ticker_generation,ok,direct:SUMMER
+2026-05-20T06:23:05.985873+00:00,E003,ticker_generation,ok,derivative:SUMMER
+2026-05-20T06:23:05.985890+00:00,E003,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.985907+00:00,E003,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.985924+00:00,E003,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.985941+00:00,E003,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.985958+00:00,E003,ticker_generation,ok,meme_phrase:HYPETR
+2026-05-20T06:23:05.985991+00:00,E004,ticker_generation,ok,direct:NBAFIN
+2026-05-20T06:23:05.986009+00:00,E004,ticker_generation,ok,derivative:NBAX
+2026-05-20T06:23:05.986026+00:00,E004,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.986042+00:00,E004,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.986059+00:00,E004,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.986075+00:00,E004,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.986093+00:00,E004,ticker_generation,ok,meme_phrase:STARPL
+2026-05-20T06:23:05.986125+00:00,E005,ticker_generation,ok,direct:TOYSTO
+2026-05-20T06:23:05.986142+00:00,E005,ticker_generation,ok,derivative:TOYX
+2026-05-20T06:23:05.986159+00:00,E005,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.986184+00:00,E005,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.986200+00:00,E005,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.986215+00:00,E005,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.986252+00:00,E005,ticker_generation,ok,meme_phrase:CHILDH
+2026-05-20T06:23:05.986286+00:00,E006,ticker_generation,ok,direct:OPENAI
+2026-05-20T06:23:05.986321+00:00,E006,ticker_generation,ok,derivative:OPENAI
+2026-05-20T06:23:05.986337+00:00,E006,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.986352+00:00,E006,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.986375+00:00,E006,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.986400+00:00,E006,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.986416+00:00,E006,ticker_generation,ok,meme_phrase:AIAGEN
+2026-05-20T06:23:05.986449+00:00,E007,ticker_generation,ok,direct:GTAVI
+2026-05-20T06:23:05.986466+00:00,E007,ticker_generation,ok,derivative:GTAX
+2026-05-20T06:23:05.986501+00:00,E007,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.986517+00:00,E007,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.986534+00:00,E007,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.986549+00:00,E007,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.986564+00:00,E007,ticker_generation,ok,meme_phrase:CRIMES
+2026-05-20T06:23:05.986596+00:00,E008,ticker_generation,ok,direct:USMIDT
+2026-05-20T06:23:05.986613+00:00,E008,ticker_generation,ok,derivative:USX
+2026-05-20T06:23:05.986628+00:00,E008,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.986644+00:00,E008,ticker_generation,ok,location:USA
+2026-05-20T06:23:05.986659+00:00,E008,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.986674+00:00,E008,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.986690+00:00,E008,ticker_generation,ok,meme_phrase:DEBATE
+2026-05-20T06:23:05.986720+00:00,E009,ticker_generation,ok,direct:SOLANA
+2026-05-20T06:23:05.986774+00:00,E009,ticker_generation,ok,derivative:SOLANA
+2026-05-20T06:23:05.986794+00:00,E009,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.986809+00:00,E009,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.986843+00:00,E009,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.986862+00:00,E009,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.986879+00:00,E009,ticker_generation,ok,meme_phrase:FOUNDE
+2026-05-20T06:23:05.986912+00:00,E010,ticker_generation,ok,direct:SUPERB
+2026-05-20T06:23:05.986929+00:00,E010,ticker_generation,ok,derivative:SUPERX
+2026-05-20T06:23:05.986945+00:00,E010,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.986978+00:00,E010,ticker_generation,ok,location:USA
+2026-05-20T06:23:05.986995+00:00,E010,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.987012+00:00,E010,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.987028+00:00,E010,ticker_generation,ok,meme_phrase:BRANDA
+2026-05-20T06:23:05.987062+00:00,E011,ticker_generation,ok,direct:AVENGE
+2026-05-20T06:23:05.987079+00:00,E011,ticker_generation,ok,derivative:AVENGE
+2026-05-20T06:23:05.987094+00:00,E011,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.987110+00:00,E011,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.987126+00:00,E011,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.987141+00:00,E011,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.987156+00:00,E011,ticker_generation,ok,meme_phrase:HEROVI
+2026-05-20T06:23:05.987187+00:00,E012,ticker_generation,ok,direct:DUNEPA
+2026-05-20T06:23:05.987204+00:00,E012,ticker_generation,ok,derivative:DUNEX
+2026-05-20T06:23:05.987219+00:00,E012,ticker_generation,skipped,person:insufficient context
+2026-05-20T06:23:05.987239+00:00,E012,ticker_generation,skipped,location:insufficient context
+2026-05-20T06:23:05.987282+00:00,E012,ticker_generation,ok,slang:WAGMI
+2026-05-20T06:23:05.987310+00:00,E012,ticker_generation,skipped,controversy:insufficient context
+2026-05-20T06:23:05.987328+00:00,E012,ticker_generation,ok,meme_phrase:SANDWO
