@@ -1,0 +1,5 @@
+source_event_id,ticker,status,reason
+1,PEPEBO,ok,generated
+2,DOGERU,ok,generated
+3,CATWAV,ok,generated
+4,,failed,missing token_name

@@ -1,0 +1,6 @@
+timestamp,event_id,stage,status,reason
+2026-05-20T04:28:30.573213,1,ticker_generation,ok,generated
+2026-05-20T04:28:30.573343,2,ticker_generation,ok,generated
+2026-05-20T04:28:30.573391,3,ticker_generation,ok,generated
+2026-05-20T04:28:30.573431,4,ticker_generation,failed,missing token_name
+2026-05-20T04:28:31.083530,2,risk_scan,flagged,low_liquidity|concentration_risk|suspicious_name

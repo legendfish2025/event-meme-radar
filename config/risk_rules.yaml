@@ -1,0 +1,17 @@
+rules:
+  low_liquidity:
+    condition: "liquidity_usd < 10000"
+    severity: high
+  concentration_risk:
+    condition: "top_holder_pct > 20"
+    severity: high
+  suspicious_name:
+    condition: "name_contains_suspicious == true"
+    severity: medium
+
+required_fields:
+  - token_name
+  - chain
+  - event_type
+  - liquidity_usd
+  - social_mention_growth

@@ -1,0 +1,5 @@
+id,token_name,chain,event_type,liquidity_usd,social_mention_growth,volume_spike,dev_activity,launch_proximity,influencer_signal,top_holder_pct,name_contains_suspicious
+1,PEPEBONK,solana,launch,15000,80,65,50,90,70,15,false
+2,DOGERUG,solana,social_raid,5000,95,40,20,60,85,35,true
+3,CATWAVE,solana,listing_rumor,20000,55,70,65,50,40,18,false
+4,,solana,launch,12000,70,55,45,80,60,10,false

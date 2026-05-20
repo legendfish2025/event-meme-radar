@@ -1,0 +1,10 @@
+weights:
+  social_mention_growth: 0.30
+  volume_spike: 0.25
+  dev_activity: 0.15
+  launch_proximity: 0.20
+  influencer_signal: 0.10
+
+thresholds:
+  high_priority: 75
+  medium_priority: 50

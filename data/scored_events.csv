@@ -1,0 +1,5 @@
+id,token_name,ticker,score,risk_flags,missing_data,failure_reasons
+1,PEPEBONK,PEPEBO,72.75,,,
+2,DOGERUG,DOGERU,62.0,low_liquidity|concentration_risk|suspicious_name,,
+3,CATWAVE,CATWAV,57.75,,,
+4,,,63.5,,token_name,missing data: token_name|ticker issue
