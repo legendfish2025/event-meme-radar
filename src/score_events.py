@@ -1,135 +1,83 @@
 import csv
-from datetime import datetime
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 EVENTS_CSV = BASE_DIR / "data" / "events.csv"
 TICKERS_CSV = BASE_DIR / "data" / "ticker_candidates.csv"
 OUTPUT_CSV = BASE_DIR / "data" / "scored_events.csv"
-DECISION_LOG_CSV = BASE_DIR / "data" / "decision_log.csv"
-WEIGHTS_YAML = BASE_DIR / "config" / "scoring_weights.yaml"
-RISK_YAML = BASE_DIR / "config" / "risk_rules.yaml"
 
 
-def _log(event_id: str, stage: str, status: str, reason: str) -> None:
-    with DECISION_LOG_CSV.open("a", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow([datetime.utcnow().isoformat(), event_id, stage, status, reason])
-
-
-def _to_float(value: str) -> float:
+def _to_int(v: str) -> int:
     try:
-        return float(value)
-    except (ValueError, TypeError):
-        return 0.0
+        return int(v)
+    except (TypeError, ValueError):
+        return 0
 
 
-def _load_weights(path: Path) -> dict:
-    weights = {}
-    in_weights = False
-    for raw in path.read_text(encoding="utf-8").splitlines():
-        line = raw.rstrip()
-        if not line.strip() or line.strip().startswith("#"):
-            continue
-        if line.strip() == "weights:":
-            in_weights = True
-            continue
-        if in_weights and not line.startswith("  "):
-            break
-        if in_weights and ":" in line:
-            k, v = line.strip().split(":", 1)
-            weights[k.strip()] = float(v.strip())
-    return weights
-
-
-def _load_required_fields(path: Path) -> list:
-    required = []
-    in_required = False
-    for raw in path.read_text(encoding="utf-8").splitlines():
-        line = raw.rstrip()
-        if line.strip() == "required_fields:":
-            in_required = True
-            continue
-        if in_required:
-            s = line.strip()
-            if not s:
-                continue
-            if s.startswith("-"):
-                required.append(s[1:].strip())
-            elif not line.startswith("  "):
-                break
-    return required
+def _priority(total: int) -> str:
+    if 40 <= total <= 50:
+        return "Watch Closely"
+    if 30 <= total <= 39:
+        return "Wait"
+    return "Ignore"
 
 
 def run() -> None:
-    weights = _load_weights(WEIGHTS_YAML)
-    required_fields = _load_required_fields(RISK_YAML)
-
-    ticker_map = {}
+    ticker_map: dict[str, list[str]] = {}
     with TICKERS_CSV.open("r", newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            ticker_map[row["source_event_id"]] = row
+            ticker_map.setdefault(row["event_id"], []).append(f"{row['ticker']}({row['ticker_type']})")
 
-    out_rows = []
+    out = []
     with EVENTS_CSV.open("r", newline="", encoding="utf-8") as f:
-        for event in csv.DictReader(f):
-            event_id = event.get("id", "")
-            missing = [k for k in required_fields if not (event.get(k) or "").strip()]
+        for e in csv.DictReader(f):
+            gravity = _to_int(e["event_gravity_score"])
+            simplicity = _to_int(e["narrative_simplicity_score"])
+            timing = _to_int(e["timing_score"])
+            total = gravity + simplicity + timing
+            missing_data = e.get("missing_data", "").strip()
+            danger_flags = []
+            if _to_int(e["timing_score"]) <= 4:
+                danger_flags.append("timing_weak")
+            if "delay" in (e.get("why_this_may_fail", "").lower()):
+                danger_flags.append("delay_risk")
+            if missing_data:
+                danger_flags.append("missing_data")
 
-            score = 0.0
-            score += _to_float(event.get("social_mention_growth")) * weights["social_mention_growth"]
-            score += _to_float(event.get("volume_spike")) * weights["volume_spike"]
-            score += _to_float(event.get("dev_activity")) * weights["dev_activity"]
-            score += _to_float(event.get("launch_proximity")) * weights["launch_proximity"]
-            score += _to_float(event.get("influencer_signal")) * weights["influencer_signal"]
-
-            risks = []
-            if _to_float(event.get("liquidity_usd")) < 10000:
-                risks.append("low_liquidity")
-            if _to_float(event.get("top_holder_pct")) > 20:
-                risks.append("concentration_risk")
-            if (event.get("name_contains_suspicious") or "").lower() == "true":
-                risks.append("suspicious_name")
-
-            ticker_row = ticker_map.get(event_id, {})
-            ticker = ticker_row.get("ticker", "")
-            ticker_status = ticker_row.get("status", "missing")
-
-            failure_reasons = []
-            if missing:
-                failure_reasons.append("missing data: " + ",".join(missing))
-            if ticker_status != "ok":
-                failure_reasons.append("ticker issue")
-            if risks:
-                _log(event_id, "risk_scan", "flagged", "|".join(risks))
-
-            out_rows.append(
+            out.append(
                 {
-                    "id": event_id,
-                    "token_name": event.get("token_name", ""),
-                    "ticker": ticker,
-                    "score": round(score, 2),
-                    "risk_flags": "|".join(risks),
-                    "missing_data": "|".join(missing),
-                    "failure_reasons": "|".join(failure_reasons),
+                    "event_id": e["event_id"],
+                    "event_name": e["event_name"],
+                    "category": e["category"],
+                    "date": e["date"],
+                    "event_gravity_score": gravity,
+                    "narrative_simplicity_score": simplicity,
+                    "timing_score": timing,
+                    "preliminary_total_score": total,
+                    "priority_class": _priority(total),
+                    "ticker_candidates": " | ".join(ticker_map.get(e["event_id"], [])),
+                    "search_keywords": e["search_keywords"],
+                    "likely_hype_window": e["likely_hype_window"],
+                    "too_early_late_risk": f"early:{e['too_early_risk']} / late:{e['too_late_risk']}",
+                    "danger_flags": "|".join(danger_flags),
+                    "missing_data": missing_data,
+                    "why_this_may_fail": e["why_this_may_fail"],
                 }
             )
+
+    out.sort(key=lambda x: x["preliminary_total_score"], reverse=True)
 
     with OUTPUT_CSV.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(
             f,
             fieldnames=[
-                "id",
-                "token_name",
-                "ticker",
-                "score",
-                "risk_flags",
-                "missing_data",
-                "failure_reasons",
+                "event_id","event_name","category","date","event_gravity_score","narrative_simplicity_score",
+                "timing_score","preliminary_total_score","priority_class","ticker_candidates","search_keywords",
+                "likely_hype_window","too_early_late_risk","danger_flags","missing_data","why_this_may_fail",
             ],
         )
         writer.writeheader()
-        writer.writerows(out_rows)
+        writer.writerows(out)
 
 
 if __name__ == "__main__":

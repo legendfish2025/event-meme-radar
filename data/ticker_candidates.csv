@@ -1,5 +1,51 @@
-source_event_id,ticker,status,reason
-1,PEPEBO,ok,generated
-2,DOGERU,ok,generated
-3,CATWAV,ok,generated
-4,,failed,missing token_name
+event_id,ticker,ticker_type,reason,simplicity_score,ambiguity_risk
+E001,FIFAWO,direct,Event name compression,9,low
+E001,FIFAX,derivative,Variant of primary event ticker,7,medium
+E001,WAGMI,slang,Common crypto slang mapping,4,high
+E001,COUNTR,meme_phrase,Meme-angle phrase compression,8,medium
+E002,APPLEW,direct,Event name compression,9,low
+E002,APPLEX,derivative,Variant of primary event ticker,7,medium
+E002,WAGMI,slang,Common crypto slang mapping,4,high
+E002,AIFEAT,meme_phrase,Meme-angle phrase compression,8,medium
+E003,SUMMER,direct,Event name compression,9,low
+E003,SUMMER,derivative,Variant of primary event ticker,7,medium
+E003,WAGMI,slang,Common crypto slang mapping,4,high
+E003,HYPETR,meme_phrase,Meme-angle phrase compression,8,medium
+E004,NBAFIN,direct,Event name compression,9,low
+E004,NBAX,derivative,Variant of primary event ticker,7,medium
+E004,WAGMI,slang,Common crypto slang mapping,4,high
+E004,STARPL,meme_phrase,Meme-angle phrase compression,8,medium
+E005,TOYSTO,direct,Event name compression,9,low
+E005,TOYX,derivative,Variant of primary event ticker,7,medium
+E005,WAGMI,slang,Common crypto slang mapping,4,high
+E005,CHILDH,meme_phrase,Meme-angle phrase compression,8,medium
+E006,OPENAI,direct,Event name compression,9,low
+E006,OPENAI,derivative,Variant of primary event ticker,7,medium
+E006,WAGMI,slang,Common crypto slang mapping,4,high
+E006,AIAGEN,meme_phrase,Meme-angle phrase compression,8,medium
+E007,GTAVI,direct,Event name compression,9,low
+E007,GTAX,derivative,Variant of primary event ticker,7,medium
+E007,WAGMI,slang,Common crypto slang mapping,4,high
+E007,CRIMES,meme_phrase,Meme-angle phrase compression,8,medium
+E008,USMIDT,direct,Event name compression,9,low
+E008,USX,derivative,Variant of primary event ticker,7,medium
+E008,USA,location,Location-based shorthand,6,medium
+E008,WAGMI,slang,Common crypto slang mapping,4,high
+E008,DEBATE,meme_phrase,Meme-angle phrase compression,8,medium
+E009,SOLANA,direct,Event name compression,9,low
+E009,SOLANA,derivative,Variant of primary event ticker,7,medium
+E009,WAGMI,slang,Common crypto slang mapping,4,high
+E009,FOUNDE,meme_phrase,Meme-angle phrase compression,8,medium
+E010,SUPERB,direct,Event name compression,9,low
+E010,SUPERX,derivative,Variant of primary event ticker,7,medium
+E010,USA,location,Location-based shorthand,6,medium
+E010,WAGMI,slang,Common crypto slang mapping,4,high
+E010,BRANDA,meme_phrase,Meme-angle phrase compression,8,medium
+E011,AVENGE,direct,Event name compression,9,low
+E011,AVENGE,derivative,Variant of primary event ticker,7,medium
+E011,WAGMI,slang,Common crypto slang mapping,4,high
+E011,HEROVI,meme_phrase,Meme-angle phrase compression,8,medium
+E012,DUNEPA,direct,Event name compression,9,low
+E012,DUNEX,derivative,Variant of primary event ticker,7,medium
+E012,WAGMI,slang,Common crypto slang mapping,4,high
+E012,SANDWO,meme_phrase,Meme-angle phrase compression,8,medium

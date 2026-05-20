@@ -1,27 +1,36 @@
 # event-meme-radar
 
-Solana / Pump.fun 系ミームコイン向けの**イベント駆動リサーチOS**です。
+イベント駆動型の meme radar（研究OS）です。  
+v1 は **event -> meme angle -> ticker candidates -> timing/risk -> report** に集中します。
 
-> 本リポジトリは調査・研究用途のみです。投資助言、自動売買、ウォレット操作、秘密鍵処理は含みません。
+> 本リポジトリは研究用途のみ。投資助言・自動売買・ウォレット操作・秘密鍵処理は含みません。
 
-## Features
-- イベントデータを重み付きでスコアリング
-- ticker 候補の自動生成（品質チェック付き）
-- 危険信号（risk flags）と missing data の検知
-- 失敗理由を decision log に保存
-- 日次Markdownレポート生成 (`make daily`)
+## v1 Data Model
+`data/events.csv` はトークン観測データではなく、イベント候補テーブルです。
 
-## Structure
-- `config/`: スコア重み・リスクルール・ウォッチリスト
-- `data/`: 入力/中間データ（CSV）
-- `src/`: コアロジック
-- `reports/`: 日次レポート
-- `tests/`: 単体テスト
+必須列:
+- event_id, event_name, date, category
+- why_attention_will_gather, meme_angle, search_keywords
+- ideal_accumulation_window, likely_hype_window
+- too_early_risk, too_late_risk
+- event_gravity_score, narrative_simplicity_score, timing_score
+- why_this_may_fail, missing_data
+
+## Outputs
+- `data/ticker_candidates.csv`  
+  列: event_id, ticker, ticker_type, reason, simplicity_score, ambiguity_risk
+- `data/scored_events.csv`  
+  preliminary_total_score = gravity + simplicity + timing（max 50）
+- `reports/YYYY-MM-DD.md`  
+  今日監視すべきイベントを判断するための9セクションレポート
+
+## Scoring
+- Watch Closely: 40-50
+- Wait: 30-39
+- Ignore: <30
 
 ## Usage
 ```bash
 make test
 make daily
 ```
-
-`make daily` 実行後に `reports/YYYY-MM-DD.md` が生成されます。
